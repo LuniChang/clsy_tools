@@ -47,20 +47,31 @@ missionType=tk.IntVar()
 missionType.set(0)
 
 missionlevel=tk.StringVar()
-missionlevel.set("10,10,8,9")
+missionlevel.set("4,4,2,3")
+
+teamNum=tk.StringVar()
+teamNum.set("1,2,3,4")
+
 def startEveryday():
-    replyEveryDay.missionType=int(missionType.get())
-    replyEveryDay.missionlevel=missionlevel.get().split(",")
-    replyEveryDay.start()
+    replyEveryday.missionType=missionType.get()
+    replyEveryday.missionlevel=missionlevel.get().split(",")
+    replyEveryday.teamNum=teamNum.get().split(",")
+    replyEveryday.start()
 
 tk.Label(fm1,text="0自动左到右1234按顺序").grid(row=3,column=0)
 
 tk.Entry(fm1,textvariable=missionType,width=10).grid(row=3,column=1)
+tk.Label(fm1,text=missionlevel).grid(row=3,column=0)
 
+tk.Label(fm1,text="难度").grid(row=4,column=0)
+tk.Entry(fm1,textvariable=missionlevel,width=10).grid(row=4,column=1)
+
+tk.Label(fm1,text="队伍").grid(row=5,column=0)
+tk.Entry(fm1,textvariable=teamNum,width=10).grid(row=5,column=1)
 tk.Button(fm1, text="开始每日", width=20, height=1,
-          command=startEveryday).grid(row=3, column=2)
+          command=startEveryday).grid(row=6, column=0)
 tk.Button(fm1, text="结束每日", width=20, height=1,
-          command=replyEveryday.stop).grid(row=3, column=3)
+          command=replyEveryday.stop).grid(row=6, column=1)
 
 
 
