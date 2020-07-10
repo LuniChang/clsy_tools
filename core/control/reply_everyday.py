@@ -43,7 +43,7 @@ class ReplyEveryDay(BaseControl):
 
     def run(self):
         battleCount = 0
-        toBattleType = 1
+        toBattleType = 0
         while self._isRun:
             win32gui.SetForegroundWindow(self.handle)
 
@@ -55,13 +55,14 @@ class ReplyEveryDay(BaseControl):
                 if self.missionType == 0:
 
             
-                    self.leftClickPer(20*toBattleType,50)
+                    self.leftClickPer(20*(toBattleType+1),50)
 
                   
                    
-                    if battleCount > 8:
-                        battleCount = 0
-                    pass
+                    if battleCount >= 8:
+                        break
+                    #     battleCount = 0
+                    # pass
                 else :
                     toBattleType=self.missionType-1
                     self.leftClickPer(20*(toBattleType+1),50)
@@ -70,23 +71,26 @@ class ReplyEveryDay(BaseControl):
                 time.sleep(2)
 
             if self.inLevel():
+                print("battleCount",battleCount)
                 if self.missionType == 0:
                     curToBattleType=toBattleType
-                    toBattleType = int(battleCount/2)+1
-                    
-                    if toBattleType!=curToBattleType:
+           
+                    toBattleType = int(battleCount/2)
+                    # if battleCount==2:
+                    #    toBattleType = 1
+                    # if battleCount==4:
+                    #    toBattleType = 2
+                    # if battleCount==6:
+                    #    toBattleType = 3
+                    if toBattleType>curToBattleType :
                         self.leftClickPer(2,2)#返回每日界面
+                        time.sleep(1)
                         continue
-                    
-
-                else:
-                    level=int(self.missionlevel[toBattleType])   
-                    # if level>6:
-                        # self.leftClickPer(50,10+(level-6)*20)
-                    # else:
-                    #     self.dragPer(50,90,50,10)    
-                    self.leftClickPer(35,10+level*16)
-                    time.sleep(1)
+                
+                level=int(self.missionlevel[toBattleType])   
+        
+                self.leftClickPer(35,10+level*16)
+                time.sleep(1)
 
             if self.onSelectTeam():
                 teamCode=int(self.teamNum[toBattleType])
