@@ -83,7 +83,7 @@ class ReplyEveryDay(BaseControl):
                     # if battleCount==6:
                     #    toBattleType = 3
                     if toBattleType>curToBattleType :
-                        self.leftClickPer(2,2)#返回每日界面
+                        self.leftClickPer(5,5)#返回每日界面
                         time.sleep(1)
                         continue
                 
