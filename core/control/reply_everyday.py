@@ -86,7 +86,7 @@ class ReplyEveryDay(BaseControl):
                         self.leftClickPer(5,5)#返回每日界面
                         time.sleep(1)
                         continue
-                
+                 
                 level=int(self.missionlevel[toBattleType])   
         
                 self.leftClickPer(35,10+level*16)
@@ -96,8 +96,10 @@ class ReplyEveryDay(BaseControl):
                 teamCode=int(self.teamNum[toBattleType])
  
                 self.toSelectTeam(teamCode)
-                self.clickBattle()
                 battleCount = battleCount+1
+                self.clickBattle()
+                time.sleep(2)
+              
 
      
             if self.onBattleEnd():
