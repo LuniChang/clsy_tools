@@ -30,7 +30,7 @@ def resetHandle():
     replyEveryday.handle = handle
  
 
-main.title("碧蓝航线工具")
+main.title("苍蓝誓约工具")
 main.geometry("480x780")
 
 fm1 = tk.Frame(main)
@@ -47,7 +47,7 @@ missionType=tk.IntVar()
 missionType.set(0)
 
 missionlevel=tk.StringVar()
-missionlevel.set("4,4,2,3")
+missionlevel.set("4,4,3,3")
 
 teamNum=tk.StringVar()
 teamNum.set("1,2,3,4")
