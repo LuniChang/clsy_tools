@@ -71,11 +71,11 @@ class BaseControl:
 
 
     def clickOnGetItems(self):
-        win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         self.leftClick(self.getPosX(50), self.getPosY(65))
 
     def battleContinue(self):
-        win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         self.leftClick(self.getPosX(99), self.getPosY(99))
         self.resetCusor()
 
@@ -94,11 +94,11 @@ class BaseControl:
    
 
     def intoMap(self):
-        win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         self.leftClick(self.getPosX(80), self.getPosY(85))   
 
     def atTeamIntoMap(self):
-        win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(80), self.getPosY(85)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
@@ -106,7 +106,7 @@ class BaseControl:
 
     #阵容小于3或者大于6不能用
     def toSelectTeam(self,teamNo):
-        win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         self.leftClickPer(10,20+teamNo*10)
 
       

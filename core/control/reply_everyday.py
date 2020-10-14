@@ -44,7 +44,7 @@ class ReplyEveryDay(BaseControl):
         battleCount = 0
         toBattleType = 0
         while self._isRun:
-            win32gui.SetForegroundWindow(self.handle)
+            screen.setForegroundWindow(self.handle)
 
             # 底部菜单hash
             self.resetCusor()

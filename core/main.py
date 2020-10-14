@@ -47,7 +47,7 @@ missionType=tk.IntVar()
 missionType.set(0)
 
 missionlevel=tk.StringVar()
-missionlevel.set("4,4,3,3")
+missionlevel.set("4,4,4,3")
 
 teamNum=tk.StringVar()
 teamNum.set("1,2,3,4")

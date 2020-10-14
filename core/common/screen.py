@@ -47,7 +47,7 @@ def grab_capture(filename,hwnd):
 
 
 def grabCaptureDir(hwnd,dirName):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   wLeft, wTop, wRight, wBottom = appGetWindowRect(hwnd)
   img = ImageGrab.grab(bbox=(wLeft, wTop, wRight, wBottom))
   phash=imgHash(img,hashSize,highfreq_factor)
@@ -58,7 +58,7 @@ def grabCaptureDir(hwnd,dirName):
   img.close()
 
 def grabCaptureDef(hwnd,needShow=False):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   wLeft, wTop, wRight, wBottom = appGetWindowRect(hwnd)
   img = ImageGrab.grab(bbox=(wLeft, wTop, wRight, wBottom))
   phash=imgHash(img,hashSize,highfreq_factor).__str__()
@@ -72,7 +72,7 @@ def grabCaptureDef(hwnd,needShow=False):
  
 
 def grabCaptureRect(hwnd,tLeft, tTop, tRight, tBottom,needShow=False):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   img = ImageGrab.grab(bbox=(tLeft, tTop, tRight, tBottom))
   screenPath=path.getProjectPath()+"screen\\rect\\"+datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")+".png"
   if not os.path.exists(path.getProjectPath()+"screen\\rect"):
@@ -84,7 +84,7 @@ def grabCaptureRect(hwnd,tLeft, tTop, tRight, tBottom,needShow=False):
 
 
 def grabCaptureRectPer(hwnd,tLeft, tTop, tRight, tBottom,needShow=False):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   xLeft=getPosX(hwnd,tLeft)
   yLeft=getPosY(hwnd,tTop)
   xRight=getPosX(hwnd,tRight)
@@ -100,7 +100,7 @@ def grabCaptureRectPer(hwnd,tLeft, tTop, tRight, tBottom,needShow=False):
   img.close()
 
 def grabCaptureRectPerHash(hwnd,tLeft, tTop, tRight, tBottom,needShow=False):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
 
   xLeft=getPosX(hwnd,tLeft)
   yLeft=getPosY(hwnd,tTop)
@@ -221,7 +221,7 @@ def screenRectPerHash(hwnd,pLeft, pTop, pRight, pBottom):
 
 
 def getScreenRectPerImg(hwnd,pLeft, pTop, pRight, pBottom):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   xLeft=getPosX(hwnd,pLeft)
   yLeft=getPosY(hwnd,pTop)
   xRight=getPosX(hwnd,pRight)
@@ -231,7 +231,7 @@ def getScreenRectPerImg(hwnd,pLeft, pTop, pRight, pBottom):
 
 
 def winScreenRectHash(hwnd,pLeft, pTop, pRight, pBottom):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   wLeft, wTop, wRight, wBottom = appGetWindowRect(hwnd)
   img = ImageGrab.grab(bbox=(wLeft+pLeft,wTop+pTop , wLeft+pRight,wTop+pBottom ))
   phash=imgHash(img,hashSize,highfreq_factor)
@@ -241,7 +241,7 @@ def winScreenRectHash(hwnd,pLeft, pTop, pRight, pBottom):
 
 #窗口hash
 def winScreenHash(hwnd):
-  win32gui.SetForegroundWindow(hwnd)
+  setForegroundWindow(hwnd)
   wLeft, wTop, wRight, wBottom = appGetWindowRect(hwnd)
   img = ImageGrab.grab(bbox=(wLeft, wTop, wRight, wBottom))
   phash=imgHash(img,hashSize,highfreq_factor)
@@ -280,7 +280,7 @@ def alikeHashValue(hash1,hash2): #明汉距离 看情况取值
 
 
 # def screenRectPHash(hwnd,pLeft, pTop, pRight, pBottom):
-#   win32gui.SetForegroundWindow(hwnd)
+#   setForegroundWindow(hwnd)
 
 #   # print("screenRectPerHash" ,xLeft,yLeft , xRight,yRight )
 #   img = ImageGrab.grab(bbox=(pLeft, pTop, pRight, pBottom ))
@@ -357,3 +357,11 @@ def matchResImgInWindow(handle,imgName,threshold=0.8,mult=True):
 
   print(xyList)
   return  xyList
+
+
+
+def setForegroundWindow(hwnd):
+     try:
+        setForegroundWindow(hwnd)
+     except: 
+       print("setForegroundWindow err")
