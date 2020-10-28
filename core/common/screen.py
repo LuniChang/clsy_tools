@@ -362,6 +362,6 @@ def matchResImgInWindow(handle,imgName,threshold=0.8,mult=True):
 
 def setForegroundWindow(hwnd):
      try:
-        setForegroundWindow(hwnd)
+        win32gui.SetForegroundWindow(hwnd)
      except: 
        print("setForegroundWindow err")
